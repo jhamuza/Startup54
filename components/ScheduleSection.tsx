@@ -2,7 +2,7 @@ import React from 'react';
 
 const ScheduleSection: React.FC = () => {
     return (
-        <section className="py-16 sm:py-20" id="schedule">
+        <section className="py-10 sm:py-12" id="schedule">
             <div className="mx-auto max-w-4xl text-center">
                 <h2 className="font-heading text-4xl font-bold tracking-tight text-[var(--text-color)] sm:text-5xl">Event Schedule</h2>
                 <p className="mt-4 text-lg leading-8 text-[var(--text-color)]/80">Three days of intense collaboration, learning, and creation.</p>

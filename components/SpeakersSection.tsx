@@ -2,7 +2,7 @@ import React from 'react';
 
 const SpeakersSection: React.FC = () => {
     return (
-        <section className="py-16 sm:py-20" id="speakers">
+        <section className="py-10 sm:py-12" id="speakers">
             <div className="mx-auto max-w-4xl text-center">
                 <h2 className="font-heading text-4xl font-bold tracking-tight text-[var(--text-color)] sm:text-5xl">Our Speakers &amp; Mentors</h2>
                 <p className="mt-4 text-lg leading-8 text-[var(--text-color)]/80">Learn from industry leaders, successful founders, and domain experts.</p>

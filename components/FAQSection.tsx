@@ -2,7 +2,7 @@ import React from 'react';
 
 const FAQSection: React.FC = () => {
     return (
-        <section className="py-16 sm:py-20" id="faq">
+        <section className="py-10 sm:py-12" id="faq">
             <div className="mx-auto max-w-4xl">
                 <h2 className="text-center font-heading text-4xl font-bold tracking-tight text-[var(--text-color)] sm:text-5xl">Frequently Asked Questions</h2>
                 <div className="mt-12 space-y-6">
