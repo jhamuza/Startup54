@@ -22,7 +22,7 @@ const HeroGrid: React.FC = () => {
                 {/* Floating Logo - Size Increased ~2.5x */}
                 <div className="relative z-10 flex flex-1 items-center justify-center my-4">
                      <img 
-                        src="https://github.com/jhamuza/Startup54/blob/main/Startup54.png?raw=true" 
+                        src="https://raw.githubusercontent.com/jhamuza/divac4/refs/heads/main/S54%20Sticker.png" 
                         alt="Startup54 Logo" 
                         className="h-60 sm:h-80 w-auto max-w-full object-contain drop-shadow-md animate-float"
                     />

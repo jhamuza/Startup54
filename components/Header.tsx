@@ -43,7 +43,7 @@ const Header: React.FC = () => {
                     {/* Logo Replacement */}
                     <div className="flex items-center cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
                          <img 
-                            src="https://github.com/jhamuza/Startup54/blob/main/Startup54.png?raw=true" 
+                            src="https://raw.githubusercontent.com/jhamuza/divac4/refs/heads/main/S54%20Sticker.png" 
                             alt="Startup54" 
                             className="h-10 sm:h-12 w-auto object-contain drop-shadow-sm"
                         />
