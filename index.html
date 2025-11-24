@@ -67,6 +67,15 @@
             100% { transform: rotate(1deg); }
         }
         
+        /* Floating Animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+        
         /* Utility for random rotation variables */
         .rotate-v1 { --random-rotate: -0.5deg; }
         .rotate-v2 { --random-rotate: 0.8deg; }

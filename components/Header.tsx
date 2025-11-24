@@ -40,13 +40,13 @@ const Header: React.FC = () => {
         >
             <div className="flex w-full justify-center px-4 sm:px-10 lg:px-20">
                 <div className="flex w-full max-w-7xl items-center justify-between whitespace-nowrap px-6 py-4">
-                    <div className="flex items-center gap-4">
-                        <div className="size-6 text-[var(--primary-accent)]">
-                            <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M44 4H30.6666V17.3334H17.3334V30.6666H4V44H44V4Z" fill="currentColor"></path>
-                            </svg>
-                        </div>
-                        <h2 className="font-heading text-2xl font-bold leading-tight tracking-tighter text-[var(--text-color)]">Startup54</h2>
+                    {/* Logo Replacement */}
+                    <div className="flex items-center cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+                         <img 
+                            src="https://github.com/jhamuza/Startup54/blob/main/Startup54.png?raw=true" 
+                            alt="Startup54" 
+                            className="h-10 sm:h-12 w-auto object-contain drop-shadow-sm"
+                        />
                     </div>
                     
                     {/* Desktop Menu */}
