@@ -7,30 +7,30 @@ const HeroGrid: React.FC = () => {
             {/* Main Hero Card */}
             <div className="group relative flex min-h-[300px] flex-col justify-between overflow-hidden rounded-2xl p-6 card-shadow-doodle card-border @[1024px]:col-span-2 @[1024px]:row-span-2 rotate-small rotate-v1 transition-transform duration-300 hover:scale-[1.02] hover:-translate-y-1">
                 {/* Background Image */}
-                <div 
+                <div
                     className="absolute inset-0 z-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
-                    style={{backgroundImage: "url('https://images.unsplash.com/photo-1596496356933-9b6e0b186b88?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')"}}
+                    style={{ backgroundImage: "url('https://images.unsplash.com/photo-1596496356933-9b6e0b186b88?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')" }}
                 />
                 {/* Bright Overlay for readability */}
                 <div className="absolute inset-0 z-0 bg-white/60 backdrop-blur-[2px] shadow-[inset_0_0_0_0_transparent] transition-shadow duration-300 group-hover:shadow-[inset_0_0_0_1000px_rgba(255,255,255,0.1)]"></div>
-                
+
                 <div className="relative z-10 flex flex-col">
                     <h1 className="font-heading text-4xl font-black leading-tight text-[var(--text-color)] @[640px]:text-6xl">Empowering Communities</h1>
                     <p className="mt-2 text-2xl font-medium text-[var(--text-color)]">through Entrepreneurship Education.</p>
                 </div>
-                
+
                 {/* Floating Logo - Size Increased ~2.5x */}
                 <div className="relative z-10 flex flex-1 items-center justify-center my-4">
-                     <img 
-                        src="https://raw.githubusercontent.com/jhamuza/divac4/refs/heads/main/S54%20Sticker.png" 
-                        alt="Startup54 Logo" 
+                    <img
+                        src="https://raw.githubusercontent.com/jhamuza/divac4/refs/heads/main/S54%20Sticker.png"
+                        alt="Startup54 Logo"
                         className="h-60 sm:h-80 w-auto max-w-full object-contain drop-shadow-md animate-float"
                     />
                 </div>
 
                 <div className="relative z-10 mt-auto pt-6">
                     <h2 className="font-heading text-3xl font-bold leading-tight text-[var(--text-color)] mb-2">
-                        Event Starts <span className="bg-[var(--tertiary-accent)] text-black px-2 py-1 rounded-md inline-block transform -rotate-1 shadow-sm">January 9, 2026</span>
+                        Event Starts <span className="bg-[var(--tertiary-accent)] text-black px-2 py-1 rounded-md inline-block transform -rotate-1 shadow-sm">January 23, 2026</span>
                     </h2>
                     <CountdownTimer />
                 </div>
@@ -94,21 +94,21 @@ const HeroGrid: React.FC = () => {
             {/* Venue Card */}
             <div className="group relative flex min-h-[200px] flex-col justify-end overflow-hidden rounded-2xl p-6 card-shadow-doodle card-border rotate-small rotate-v1 transition-transform duration-300 hover:scale-[1.02] hover:-translate-y-1">
                 {/* Background Image */}
-                <div 
-                    className="absolute inset-0 z-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" 
-                    style={{backgroundImage: "url('https://tegas.org.my/wp-content/uploads/2024/10/Key-Act-1200x630-min-scaled.jpg')"}}
+                <div
+                    className="absolute inset-0 z-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+                    style={{ backgroundImage: "url('https://tegas.org.my/wp-content/uploads/2024/10/Key-Act-1200x630-min-scaled.jpg')" }}
                 >
                 </div>
-                
+
                 {/* Dark Overlay for readability */}
                 <div className="absolute inset-0 z-0 bg-black/50 backdrop-blur-[1px] transition-opacity duration-300 group-hover:opacity-40"></div>
                 <div className="absolute inset-0 rounded-2xl ring-0 transition-shadow duration-300 group-hover:shadow-[10px_10px_0_0_var(--card-stroke)] pointer-events-none"></div>
 
                 {/* Content */}
                 <div className="relative z-10 w-full">
-                     <h2 className="font-heading text-3xl font-bold leading-tight text-white drop-shadow-sm">
+                    <h2 className="font-heading text-3xl font-bold leading-tight text-white drop-shadow-sm">
                         Venue: <span className="bg-[var(--tertiary-accent)] text-black px-2 py-1 rounded-md inline-block transform -rotate-1 shadow-sm box-decoration-clone">TEGAS Digital Village</span>
-                     </h2>
+                    </h2>
                 </div>
             </div>
 
