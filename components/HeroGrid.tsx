@@ -30,7 +30,7 @@ const HeroGrid: React.FC = () => {
 
                 <div className="relative z-10 mt-auto pt-6">
                     <h2 className="font-heading text-3xl font-bold leading-tight text-[var(--text-color)] mb-2">
-                        Event Starts <span className="bg-[var(--tertiary-accent)] text-black px-2 py-1 rounded-md inline-block transform -rotate-1 shadow-sm">January 23, 2026</span>
+                        Event Starts <span className="bg-[var(--tertiary-accent)] text-black px-2 py-1 rounded-md inline-block transform -rotate-1 shadow-sm">June 19 - 22, 2026</span>
                     </h2>
                     <CountdownTimer />
                 </div>
@@ -77,7 +77,7 @@ const HeroGrid: React.FC = () => {
                 <div className="flex h-full flex-col gap-4 rounded-2xl bg-[var(--tertiary-accent)] p-6 card-shadow-doodle card-border transition-shadow duration-300 group-hover:shadow-[10px_10px_0_0_var(--card-stroke)]">
                     <h2 className="font-heading text-2xl font-bold leading-tight tracking-tighter text-[var(--text-color)]">What is Startup54?</h2>
                     <p className="text-base font-normal leading-relaxed text-[var(--text-color)]">A whirlwind 54-hour event where developers, designers, and innovators come together to turn ideas into reality. It's a platform to test ideas, develop skills, and connect with a community of creators.</p>
-                    <a href="https://luma.com/tcet541m" target="_blank" rel="noreferrer" className="mt-auto flex w-fit cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-5 bg-white text-[var(--card-stroke)] text-sm font-bold leading-normal tracking-wide transition-transform hover:scale-105 card-border">
+                    <a href="https://luma.com/ujnecsej" target="_blank" rel="noreferrer" className="mt-auto flex w-fit cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-5 bg-white text-[var(--card-stroke)] text-sm font-bold leading-normal tracking-wide transition-transform hover:scale-105 card-border">
                         <span className="truncate">Learn More</span>
                     </a>
                 </div>
@@ -117,7 +117,7 @@ const HeroGrid: React.FC = () => {
                 <div className="flex h-full min-h-[200px] flex-col items-center justify-center gap-4 rounded-2xl bg-[var(--primary-accent)] p-6 text-center card-shadow-doodle card-border transition-shadow duration-300 group-hover:shadow-[10px_10px_0_0_var(--card-stroke)]">
                     <h2 className="font-heading text-3xl font-bold leading-tight text-white">Ready to Build?</h2>
                     <p className="text-base font-medium leading-normal text-white">Join the brightest minds and create the future in one high-energy weekend.</p>
-                    <a className="flex w-full max-w-xs cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-5 bg-white text-[var(--card-stroke)] text-base font-bold leading-normal tracking-wide transition-transform hover:scale-105 card-border" href="https://luma.com/tcet541m" target="_blank" rel="noreferrer">
+                    <a className="flex w-full max-w-xs cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-5 bg-white text-[var(--card-stroke)] text-base font-bold leading-normal tracking-wide transition-transform hover:scale-105 card-border" href="https://luma.com/ujnecsej" target="_blank" rel="noreferrer">
                         <span className="truncate">Register on Luma</span>
                     </a>
                 </div>

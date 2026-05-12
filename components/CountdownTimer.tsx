@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
 const CountdownTimer: React.FC = () => {
-    // Target date: January 23, 2026 6:00 PM
-    const targetDate = new Date('2026-01-23T18:00:00').getTime();
+    // Target date: June 19, 2026 6:00 PM
+    const targetDate = new Date('2026-06-19T18:00:00').getTime();
 
     const [timeLeft, setTimeLeft] = useState({
         days: 0,

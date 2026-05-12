@@ -1,51 +1,97 @@
 import React from 'react';
 
+const mentors = [
+    {
+        name: "Samantha Lo Ee Xin",
+        role: "Digital Marketing Strategist - VPS Malaysia",
+        description: "Brings extensive experience in digital marketing for SaaS products, as well as startup ecosystem building. Involved in various roles from SMEs to Startups in Malaysia and Singapore.",
+        image: "/mentors/samantha.png",
+        accent: "var(--primary-accent)",
+        icon: "marketing"
+    },
+    {
+        name: "Louis De Rozario",
+        role: "Programme Manager - Growth Charger",
+        description: "Architect turned SME business owner turned Community Builder. Specializes in entrepreneurship programme design and execution with experience running FnB business for 4+ years.",
+        image: "/mentors/louis.png",
+        accent: "var(--secondary-accent)",
+        icon: "diversity_3"
+    },
+    {
+        name: "Siti Kasmah",
+        role: "Lecturer - Curtin University",
+        description: "Co-founding advisor of Founders Malaysia. Helps inspire students and communities by putting her business spectrum knowledge into action.",
+        image: "/mentors/siti.png",
+        accent: "var(--tertiary-accent)",
+        icon: "school"
+    },
+    {
+        name: "Garenth",
+        role: "Lecturer - Curtin University",
+        description: "Building AI3D, a startup exploring AI-powered 3D solutions that bridge creativity, design, and technology for next-generation applications.",
+        image: "/mentors/garenth.png",
+        accent: "var(--primary-accent)",
+        icon: "precision_manufacturing"
+    },
+    {
+        name: "Aidiel Mat Isa",
+        role: "Head of Partnership - Pandai (YC21)",
+        description: "Empowers people through education, leadership, and community building. Bridges innovation, culture, and growth as a Partnership Manager at Pandai.",
+        image: "/mentors/aidiel.png",
+        accent: "var(--secondary-accent)",
+        icon: "handshake"
+    },
+    {
+        name: "Collin Estera Lee",
+        role: "Project Manager",
+        description: "Community-driven innovator passionate about tech and youth empowerment. Supporting founders and creating opportunities for young changemakers.",
+        image: "/mentors/collin.png",
+        accent: "var(--tertiary-accent)",
+        icon: "groups"
+    },
+    {
+        name: "Augustinne Wong",
+        role: "Associate Economist - MARC Ratings",
+        description: "Specializing in macroeconomic research and capital market analysis. Passionate about data-driven insights and financial sustainability.",
+        image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400&h=400",
+        accent: "var(--primary-accent)",
+        icon: "monitoring"
+    },
+    {
+        name: "Law Jen Ni",
+        role: "Budget Analyst - FP&A, Xsolla",
+        description: "Focused on financial planning and budget management. Delivers financial insights that drive strategic business performance in the gaming industry.",
+        image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=400&h=400",
+        accent: "var(--secondary-accent)",
+        icon: "payments"
+    }
+];
+
 const SpeakersSection: React.FC = () => {
     return (
-        <section className="py-10 sm:py-12" id="speakers">
-            <div className="mx-auto max-w-4xl text-center">
-                <h2 className="font-heading text-4xl font-bold tracking-tight text-[var(--text-color)] sm:text-5xl">Our Speakers &amp; Mentors</h2>
-                <p className="mt-4 text-lg leading-8 text-[var(--text-color)]/80">Learn from industry leaders, successful founders, and domain experts.</p>
+        <section className="py-16 sm:py-20" id="speakers">
+            <div className="mx-auto max-w-4xl text-center mb-16">
+                <h2 className="font-heading text-4xl font-bold tracking-tight text-[var(--text-color)] sm:text-5xl">Meet Our Mentors</h2>
+                <p className="mt-4 text-lg leading-8 text-[var(--text-color)]/80">Learn from industry leaders, successful founders, and domain experts who will guide you through your startup journey.</p>
             </div>
-            <div className="mt-12 grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
-                {/* Speaker 1 */}
-                <div className="flex flex-col items-center text-center">
-                    <div className="relative rotate-small rotate-v9">
-                        <img alt="Portrait of Alex Chen" className="h-40 w-40 rounded-full object-cover card-border" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrH2-nDNllyujV5y2pXzfGrqihhtZuyk59F42LvoDFG-iOPdOSREgLj1p1yOE2WW1xUuDvu5_AjX0Hz-O6KJ3CJf1JUoF6gpxIZyFy4LpaulHS4ppHaB-YBeYBcroUTiEX0qTgG5nseJvyZhrIEh9GXlP2N1Aq3GM3gS9wi081xkVOvDmMPkph7LD1BgFLP3fDYAvcjv_9MxK0N8UIvOnf1eKiEc0GtU9k2XKwiX-O8mGbjqZdJQbDdu5e4mEUpJXtLxcsoBEG2VI6" />
-                        <div className="absolute -bottom-2 -right-2 rounded-lg bg-[var(--primary-accent)] p-2 card-shadow-doodle card-border">
-                            <span className="material-symbols-outlined text-white">business_center</span>
+            <div className="grid grid-cols-1 gap-x-8 gap-y-16 sm:grid-cols-2 lg:grid-cols-4">
+                {mentors.map((mentor, index) => (
+                    <div key={index} className="flex flex-col items-center text-center group">
+                        <div className={`relative ${index % 2 === 0 ? 'rotate-small' : 'rotate-small-alt'} transition-transform duration-300 group-hover:scale-110 group-hover:rotate-0`}>
+                            <img 
+                                alt={mentor.name} 
+                                className="h-48 w-48 rounded-2xl object-cover card-border shadow-lg" 
+                                src={mentor.image} 
+                            />
+                            <div className="absolute -bottom-3 -right-3 rounded-xl p-2 card-shadow-doodle card-border" style={{ backgroundColor: mentor.accent }}>
+                                <span className="material-symbols-outlined text-white text-2xl">{mentor.icon}</span>
+                            </div>
                         </div>
+                        <h3 className="mt-8 font-heading text-xl font-bold text-[var(--text-color)]">{mentor.name}</h3>
+                        <p className="text-sm font-bold leading-7 mb-2" style={{ color: mentor.accent }}>{mentor.role}</p>
+                        <p className="text-sm text-[var(--text-color)]/80 leading-relaxed px-2">{mentor.description}</p>
                     </div>
-                    <h3 className="mt-6 font-heading text-2xl font-bold text-[var(--text-color)]">Alex Chen</h3>
-                    <p className="text-base font-semibold leading-7 text-[var(--primary-accent)]">Founder &amp; CEO, InnovateX</p>
-                    <p className="mt-2 text-sm text-[var(--text-color)]/80">Expert in product development and scaling tech startups.</p>
-                </div>
-
-                {/* Speaker 2 */}
-                <div className="flex flex-col items-center text-center">
-                    <div className="relative rotate-small-alt rotate-v10">
-                        <img alt="Portrait of Priya Sharma" className="h-40 w-40 rounded-full object-cover card-border" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLJFx30HXmPhTYyOYoEApkmvrblUtJFHZXSVrBBA2hDewCCO_ztzGbyfsnVxve7aOd3uVEhYsdiesn5AP-V8dfL8d-_R5lQyQ61597_3Uzm51ZNlY5Cl1dXHGqlFBI3ZU87m-pBHQUTbNSMYB3vZxjWTfjogrZSofKPaSB1hTla3yA_cOfN2cA0AJgbZo520Sr1gZ4H1kWrj85144EneFfI9YSNQsWsLaOzmSrcQnaKJ5AENPXuTwYvHhDODcuL2iEwhMvdG0W0oQx" />
-                        <div className="absolute -bottom-2 -right-2 rounded-lg bg-[var(--secondary-accent)] p-2 card-shadow-doodle card-border">
-                            <span className="material-symbols-outlined text-[var(--card-stroke)]">palette</span>
-                        </div>
-                    </div>
-                    <h3 className="mt-6 font-heading text-2xl font-bold text-[var(--text-color)]">Priya Sharma</h3>
-                    <p className="text-base font-semibold leading-7 text-[var(--secondary-accent)]">Lead UX Designer, Creative Minds</p>
-                    <p className="mt-2 text-sm text-[var(--text-color)]/80">Specializes in user-centric design and building intuitive products.</p>
-                </div>
-
-                {/* Speaker 3 */}
-                <div className="flex flex-col items-center text-center">
-                    <div className="relative rotate-small rotate-v11">
-                        <img alt="Portrait of Ben Carter" className="h-40 w-40 rounded-full object-cover card-border" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCF2FBvKpeyGgxHCJrzWFhHUNqpYShfZIBMJKDtbuAjVSh5MJdc3-d0Wm4HvwABnlzhboQJesFCwDenBSvC7QIvhPIZ2P3kDN7TkpD2goFKJbSitQCL8fCC0DcbaGa2kYkcMtpqEe3bSEcytHZM2ILm8N9UWZUKWQfopinQwvDDkRV7NTH5eaC8NRNgRruXi8YXygtTrNb3Z1061EWKPf58dJnZbETzuf4Ixg3Myu83grhJFAXA9ZxFulMtGm9AB1s0KSd1u0hr9nSz" />
-                        <div className="absolute -bottom-2 -right-2 rounded-lg bg-[var(--tertiary-accent)] p-2 card-shadow-doodle card-border">
-                            <span className="material-symbols-outlined text-[var(--card-stroke)]">trending_up</span>
-                        </div>
-                    </div>
-                    <h3 className="mt-6 font-heading text-2xl font-bold text-[var(--text-color)]">Ben Carter</h3>
-                    <p className="text-base font-semibold leading-7 text-[var(--tertiary-accent)]">Venture Capitalist, Growth Ventures</p>
-                    <p className="mt-2 text-sm text-[var(--text-color)]/80">Focuses on early-stage investments and startup strategy.</p>
-                </div>
+                ))}
             </div>
         </section>
     );
