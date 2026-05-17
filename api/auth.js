@@ -8,9 +8,7 @@ export default async function handler(req, res) {
   }
 
   const { provider, code } = req.query;
-  const baseUrl = process.env.VERCEL_URL
-    ? `https://${process.env.VERCEL_URL}`
-    : 'https://startup54.com';
+  const redirectUri = 'https://startup54.com/api/auth';
 
   // Step 1: OAuth redirect (GET /api/auth?provider=github)
   if (req.method === 'GET' && provider === 'github' && !code) {
@@ -19,9 +17,9 @@ export default async function handler(req, res) {
       return res.status(500).json({ error: 'GITHUB_CLIENT_ID not configured' });
     }
 
-    const redirectUri = `${baseUrl}/api/auth`;
     const scope = 'repo';
     const githubAuthUrl = `https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=${encodeURIComponent(redirectUri)}&scope=${scope}`;
+    console.log('Redirecting to GitHub with redirect_uri:', redirectUri);
     return res.redirect(githubAuthUrl);
   }
 
