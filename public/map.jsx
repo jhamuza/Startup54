@@ -1,39 +1,5 @@
-/* global React, L, Card, Button */
+/* global React, L, Card, Button, EVENTS */
 const { useState, useEffect, useRef } = React;
-
-const EVENTS = [
-  {
-    id: "kuching",
-    city: "Kuching",
-    region: "Sarawak",
-    status: "past",
-    dates: "Inaugural Event",
-    venue: "TEGAS Digital Village",
-    blurb: "Where it all started. 54 hours of pitches, prototypes, and late-night ramen.",
-    lat: 1.5533, lng: 110.3592
-  },
-  {
-    id: "miri",
-    city: "Miri",
-    region: "Sarawak",
-    status: "live",
-    dates: "June 19 – 21, 2026",
-    venue: "TEGAS Digital Innovation Hub Miri",
-    blurb: "Next stop. Registration is open on Luma. Bring your laptop and a half-formed idea.",
-    href: "https://luma.com/ujnecsej",
-    lat: 4.3995, lng: 113.9914
-  },
-  {
-    id: "bintulu",
-    city: "Bintulu",
-    region: "Sarawak",
-    status: "soon",
-    dates: "Coming Soon",
-    venue: "TBA",
-    blurb: "Energy capital, future Startup54 host. Join the waitlist to hear first.",
-    lat: 3.1707, lng: 113.0414
-  }
-];
 
 const STATUS = {
   live: { fill: "#FF6B6B", label: "Now Open", ink: "#fff", emoji: "campaign" },
