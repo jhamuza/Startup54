@@ -10,6 +10,7 @@ export default defineConfig(({ mode }) => {
         host: '0.0.0.0',
       },
       build: {
+        outDir: 'dist',
         rollupOptions: {
           input: 'index.html'
         }
