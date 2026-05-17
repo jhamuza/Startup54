@@ -29,7 +29,7 @@ function HeroTicket({ logo }) {
             fontFamily: "Gochi Hand", fontSize: "clamp(52px, 7vw, 100px)",
             lineHeight: 0.92, margin: "12px 0 0", letterSpacing: "-0.01em"
           }}>
-            Build something in <Highlight color="var(--s54-coral)"><span style={{ color: "#fff" }}>54</span></Highlight> hours.
+            {HERO_DATA.headline || "Build something in 54 hours."}
           </h1>
           <p style={{
             fontFamily: "Inter", fontSize: 17, lineHeight: 1.5,
@@ -69,13 +69,13 @@ function HeroTicket({ logo }) {
                 Next event
               </div>
               <h2 style={{ fontFamily: "Gochi Hand", fontSize: 64, margin: "8px 0 0", lineHeight: 0.9 }}>
-                Miri
+                {HERO_DATA.upcomingCity || "Miri"}
               </h2>
               <div style={{ fontFamily: "Gochi Hand", fontSize: 28, marginTop: 4 }}>
-                June 19 – 21
+                {HERO_DATA.dates || "June 19 – 21"}
               </div>
               <div style={{ fontFamily: "Inter", fontSize: 13, fontWeight: 600, marginTop: 6, opacity: 0.95 }}>
-                TEGAS Digital Innovation Hub
+                {HERO_DATA.venue || "TEGAS Digital Innovation Hub"}
               </div>
             </div>
             <div>
@@ -168,39 +168,6 @@ function Upcoming() {
   );
 }
 
-const DAYS = [
-  {
-    n: "1", day: "Friday", title: "The Kickoff",
-    tone: "mint", icon: "campaign",
-    bullets: [
-      { time: "6:00 PM", what: "Doors open · networking + dinner" },
-      { time: "7:30 PM", what: "60-second pitches from the floor" },
-      { time: "9:00 PM", what: "Voting + team formation" },
-      { time: "10:00 PM", what: "First standups. The hustle begins." }
-    ]
-  },
-  {
-    n: "2", day: "Saturday", title: "The Grind",
-    tone: "gold", icon: "code",
-    bullets: [
-      { time: "9:00 AM", what: "Breakfast + execution mode" },
-      { time: "11:00 AM", what: "Workshop: AI tooling for rapid validation" },
-      { time: "2:00 PM", what: "Mentor office hours rotate in" },
-      { time: "8:00 PM", what: "Pitch practice + prototype reviews" }
-    ]
-  },
-  {
-    n: "3", day: "Sunday", title: "The Climax",
-    tone: "coral", icon: "emoji_events",
-    bullets: [
-      { time: "10:00 AM", what: "Final builds + deck polish" },
-      { time: "3:00 PM", what: "Pitches to investor judges" },
-      { time: "6:00 PM", what: "Awards + greenlane offers" },
-      { time: "7:30 PM", what: "Dinner, hugs, group photo" }
-    ]
-  }
-];
-
 function Journey() {
   return (
     <section id="journey" data-screen-label="3-Day Journey"
@@ -214,7 +181,7 @@ function Journey() {
       </div>
 
       <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 22 }}>
-        {DAYS.map((d, i) =>
+        {JOURNEY_DAYS.map((d, i) =>
         <Card key={d.day} tone="white" tilt={i % 2 === 0 ? -0.6 : 0.6} lift={true}
         style={{ padding: 26 }}>
             <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 14 }}>
@@ -262,21 +229,6 @@ function Journey() {
   );
 }
 
-const WHY = [
-  { icon: "rocket_launch", tone: "coral", title: "Accelerated learning",
-    body: "Experience the highs and lows of the startup lifecycle in a single weekend." },
-  { icon: "school", tone: "mint", title: "Expert mentorship",
-    body: "Direct feedback from seasoned founders, investors, and partners like TEGAS." },
-  { icon: "fast_forward", tone: "gold", title: "The greenlane",
-    body: "Top teams skip the queue into partner accelerators and incubation hubs." },
-  { icon: "diversity_3", tone: "lavender", title: "Networking",
-    body: "Meet co-founders, hiring managers, and ecosystem players for your next chapter." },
-  { icon: "psychology", tone: "mint", title: "Modern skillsets",
-    body: "Apply cutting-edge AI tooling to validate and build, fast." },
-  { icon: "handshake", tone: "gold", title: "A real community",
-    body: "Low-pressure, supportive, first-timer-friendly. You belong here." }
-];
-
 function Why() {
   return (
     <section id="why" data-screen-label="Why participate"
@@ -296,7 +248,7 @@ function Why() {
           </p>
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 18 }}>
-          {WHY.map((w, i) =>
+          {WHY_PROPS.map((w, i) =>
           <Card key={i} tone="white" tilt={(i % 2 === 0 ? -0.5 : 0.5) * (1 + i * 0.1)}
           lift={true} style={{ padding: 20 }}>
               <IconBadge tone={w.tone} size={44}>
@@ -402,14 +354,6 @@ function Past() {
   );
 }
 
-const SUPPORTERS = [
-  { name: "TEGAS", src: "/supporters/tegas.png", bg: "white" },
-  { name: "Growth Charger", src: "/supporters/growthcharger.png", bg: "ink" },
-  { name: "Stinablis", src: "/supporters/stinablis.png", bg: "ink" },
-  { name: "Teduh Jiwa", src: "/supporters/teduhjiwa.png", bg: "white" },
-  { name: "Borneo Digital", src: "/supporters/borneodigital.png", bg: "white" }
-];
-
 function Supporters() {
   return (
     <section id="supporters" data-screen-label="Supporters"
@@ -468,11 +412,11 @@ function CTA() {
       }}>
         <h2 style={{ fontFamily: "Gochi Hand", fontSize: "clamp(36px, 5vw, 56px)",
           margin: "0 0 16px", lineHeight: 1 }}>
-          Stay in the loop
+          {CTA_DATA.headline || "Stay in the loop"}
         </h2>
         <p style={{ fontFamily: "Inter", fontSize: 18, lineHeight: 1.6,
           margin: "0 0 24px", opacity: 0.95 }}>
-          Get updates on Startup54 events across Malaysia, mentorship tips, and early access to registration.
+          {CTA_DATA.description || "Get updates on Startup54 events across Malaysia, mentorship tips, and early access to registration."}
         </p>
         <div style={{ display: "flex", gap: 12, marginTop: 24, flexWrap: "wrap", justifyContent: "center" }}>
           <input
@@ -492,9 +436,9 @@ function CTA() {
               background: "#fff"
             }}
           />
-          <Button variant="ghost" size="lg" href="https://luma.com/ujnecsej" style={{ whiteSpace: "nowrap" }}>
+          <Button variant="ghost" size="lg" href={CTA_DATA.buttonUrl || "https://luma.com/ujnecsej"} style={{ whiteSpace: "nowrap" }}>
             <span className="material-symbols-outlined" style={{ fontSize: 22 }}>arrow_forward</span>
-            Register now
+            {CTA_DATA.buttonText || "Register now"}
           </Button>
         </div>
       </Card>
