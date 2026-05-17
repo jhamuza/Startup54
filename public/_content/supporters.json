@@ -1,0 +1,9 @@
+{
+  "supporters": [
+    { "name": "TEGAS", "src": "/supporters/tegas.png", "bg": "white" },
+    { "name": "Growth Charger", "src": "/supporters/growthcharger.png", "bg": "ink" },
+    { "name": "Stinablis", "src": "/supporters/stinablis.png", "bg": "ink" },
+    { "name": "Teduh Jiwa", "src": "/supporters/teduhjiwa.png", "bg": "white" },
+    { "name": "Borneo Digital", "src": "/supporters/borneodigital.png", "bg": "white" }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "why": [
+    { "icon": "rocket_launch", "tone": "coral", "title": "Accelerated learning", "body": "Experience the highs and lows of the startup lifecycle in a single weekend." },
+    { "icon": "school", "tone": "mint", "title": "Expert mentorship", "body": "Direct feedback from seasoned founders, investors, and partners like TEGAS." },
+    { "icon": "fast_forward", "tone": "gold", "title": "The greenlane", "body": "Top teams skip the queue into partner accelerators and incubation hubs." },
+    { "icon": "diversity_3", "tone": "lavender", "title": "Networking", "body": "Meet co-founders, hiring managers, and ecosystem players for your next chapter." },
+    { "icon": "psychology", "tone": "mint", "title": "Modern skillsets", "body": "Apply cutting-edge AI tooling to validate and build, fast." },
+    { "icon": "handshake", "tone": "gold", "title": "A real community", "body": "Low-pressure, supportive, first-timer-friendly. You belong here." }
+  ]
+}

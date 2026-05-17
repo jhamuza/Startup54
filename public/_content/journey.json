@@ -1,0 +1,43 @@
+{
+  "days": [
+    {
+      "n": "1",
+      "day": "Friday",
+      "title": "The Kickoff",
+      "tone": "mint",
+      "icon": "campaign",
+      "bullets": [
+        { "time": "6:00 PM", "what": "Doors open · networking + dinner" },
+        { "time": "7:30 PM", "what": "60-second pitches from the floor" },
+        { "time": "9:00 PM", "what": "Voting + team formation" },
+        { "time": "10:00 PM", "what": "First standups. The hustle begins." }
+      ]
+    },
+    {
+      "n": "2",
+      "day": "Saturday",
+      "title": "The Grind",
+      "tone": "gold",
+      "icon": "code",
+      "bullets": [
+        { "time": "9:00 AM", "what": "Breakfast + execution mode" },
+        { "time": "11:00 AM", "what": "Workshop: AI tooling for rapid validation" },
+        { "time": "2:00 PM", "what": "Mentor office hours rotate in" },
+        { "time": "8:00 PM", "what": "Pitch practice + prototype reviews" }
+      ]
+    },
+    {
+      "n": "3",
+      "day": "Sunday",
+      "title": "The Climax",
+      "tone": "coral",
+      "icon": "emoji_events",
+      "bullets": [
+        { "time": "10:00 AM", "what": "Final builds + deck polish" },
+        { "time": "3:00 PM", "what": "Pitches to investor judges" },
+        { "time": "6:00 PM", "what": "Awards + greenlane offers" },
+        { "time": "7:30 PM", "what": "Dinner, hugs, group photo" }
+      ]
+    }
+  ]
+}
