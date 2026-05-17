@@ -10,12 +10,12 @@ async function loadCMSData() {
   try {
     // Load all content in parallel
     const [eventsRes, journeyRes, whyRes, supportersRes, heroRes, ctaRes] = await Promise.all([
-      fetch('/cms/events.json'),
-      fetch('/cms/journey.json'),
-      fetch('/cms/why.json'),
-      fetch('/cms/supporters.json'),
-      fetch('/cms/hero.json'),
-      fetch('/cms/cta.json')
+      fetch('/_content/events.json'),
+      fetch('/_content/journey.json'),
+      fetch('/_content/why.json'),
+      fetch('/_content/supporters.json'),
+      fetch('/_content/hero.json'),
+      fetch('/_content/cta.json')
     ]);
 
     const eventsData = await eventsRes.json();
