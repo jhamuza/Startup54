@@ -188,16 +188,16 @@ function Countdown({ target = "2026-06-19T09:00:00+08:00", color = "var(--s54-in
       {units.map(([label, val]) => (
         <div key={label} style={{
           background: "var(--s54-white)",
-          border: "2px solid currentColor",
+          border: "2px solid var(--s54-ink)",
           borderRadius: 8,
           padding: "8px 4px",
           textAlign: "center",
           fontFamily: "Inter, sans-serif",
         }}>
-          <div style={{ fontWeight: 800, fontSize: 24, lineHeight: 1, fontVariantNumeric: "tabular-nums", color }}>
+          <div style={{ fontWeight: 800, fontSize: 24, lineHeight: 1, fontVariantNumeric: "tabular-nums", color: "var(--s54-ink)" }}>
             {String(val).padStart(2, "0")}
           </div>
-          <div style={{ fontWeight: 600, fontSize: 10, letterSpacing: "0.06em", textTransform: "uppercase", marginTop: 4, opacity: 0.7, color }}>
+          <div style={{ fontWeight: 600, fontSize: 10, letterSpacing: "0.06em", textTransform: "uppercase", marginTop: 4, color: "var(--s54-ink-60)" }}>
             {label}
           </div>
         </div>
