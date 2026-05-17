@@ -40,6 +40,11 @@ function SarawakLeaflet({ active, onActive }) {
       return;
     }
 
+    if (!EVENTS || EVENTS.length === 0) {
+      console.warn("EVENTS not loaded yet");
+      return;
+    }
+
     const bounds = L.latLngBounds(EVENTS.map((e) => [e.lat, e.lng])).pad(0.45);
 
     const map = L.map(hostRef.current, {
@@ -115,7 +120,7 @@ function SarawakLeaflet({ active, onActive }) {
       mapRef.current = null;
       markersRef.current = {};
     };
-  }, []);
+  }, [EVENTS, onActive]);
 
   useEffect(() => {
     Object.entries(markersRef.current).forEach(([id, m]) => {
