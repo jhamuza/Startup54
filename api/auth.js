@@ -49,12 +49,12 @@ export default async function handler(req, res) {
       const data = await tokenRes.json();
 
       if (data.error) {
-        return res.status(400).json({ error: data.error });
+        return res.redirect(`/admin?error=${encodeURIComponent(data.error)}`);
       }
 
-      // Return token in format Decap expects
-      res.setHeader('Content-Type', 'application/json');
-      res.status(200).json({ token: data.access_token });
+      // Redirect to admin with token in hash for Decap CMS
+      const token = data.access_token;
+      return res.redirect(`/admin#access_token=${token}&token_type=bearer`);
     } catch (error) {
       res.status(500).json({ error: error.message });
     }
