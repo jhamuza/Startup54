@@ -52,9 +52,9 @@ export default async function handler(req, res) {
         return res.redirect(`/admin?error=${encodeURIComponent(data.error)}`);
       }
 
-      // Redirect to admin with token in hash for Decap CMS
+      // Redirect to admin with token in query params for Decap CMS
       const token = data.access_token;
-      return res.redirect(`/admin#access_token=${token}&token_type=bearer`);
+      return res.redirect(`/admin?access_token=${encodeURIComponent(token)}&token_type=bearer`);
     } catch (error) {
       res.status(500).json({ error: error.message });
     }
