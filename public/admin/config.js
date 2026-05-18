@@ -40,6 +40,7 @@ window.CMS_CONFIG = {
     {
       name: 'past-events',
       label: 'Past Events',
+      sortable_fields: [],
       files: [
         {
           name: 'past-events',
