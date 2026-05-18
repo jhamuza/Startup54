@@ -281,13 +281,13 @@ function Past() {
     }
   };
 
-  const renderMediaItem = (mediaItem) => {
+  const renderMediaItem = (mediaItem, eventIndex, mediaIndex) => {
     if (!mediaItem) return null;
     
     if (mediaItem.type === 'video') {
       return (
         <iframe
-          key={`video-${carouselIdx}`}
+          key={`${eventIndex}-${mediaIndex}`}
           width="100%"
           src={mediaItem.url}
           frameBorder="0"
@@ -305,7 +305,7 @@ function Past() {
 
     return (
       <img
-        key={`img-${carouselIdx}`}
+        key={`${eventIndex}-${mediaIndex}`}
         src={mediaItem.url}
         alt="Event media"
         style={{
@@ -349,7 +349,7 @@ function Past() {
               key={event.id}
               style={{
                 display: "grid",
-                gridTemplateColumns: "repeat(12, 1fr)",
+                gridTemplateColumns: window.innerWidth < 768 ? "repeat(1, 1fr)" : "repeat(12, 1fr)",
                 gap: 22,
                 maxHeight: isExpanded ? '1000px' : '120px',
                 transition: 'max-height 0.3s ease-in-out',
@@ -360,7 +360,7 @@ function Past() {
             >
               {isExpanded && (
                 <>
-                  <div style={{ gridColumn: "span 7" }}>
+                  <div style={{ gridColumn: window.innerWidth < 768 ? "span 1" : "span 7" }}>
                     <Card tone="white" tilt={-0.4} lift={false} style={{
                       padding: 0,
                       minHeight: 380,
@@ -371,7 +371,7 @@ function Past() {
                     }}>
                       <div style={{ flex: 1, position: 'relative', overflow: 'hidden' }}>
                         {mediaCount > 0 ? (
-                          renderMediaItem(currentMedia, carouselIdx)
+                          renderMediaItem(currentMedia, eventIndex, carouselIdx)
                         ) : (
                           <div style={{
                             width: '100%',
@@ -436,7 +436,7 @@ function Past() {
                     </Card>
                   </div>
 
-                  <div style={{ gridColumn: "span 5", display: "flex", flexDirection: "column", gap: 18 }}>
+                  <div style={{ gridColumn: window.innerWidth < 768 ? "span 1" : "span 5", display: "flex", flexDirection: "column", gap: 18 }}>
                     <Card tone="gold" tilt={0.6} lift={true} style={{ padding: 22 }}>
                       <h3 style={{ fontFamily: "Gochi Hand", fontSize: 28, margin: "0 0 8px" }}>
                         {event.title}
