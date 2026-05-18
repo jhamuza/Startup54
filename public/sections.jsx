@@ -411,46 +411,35 @@ function Past() {
                         )}
                       </div>
                       {mediaCount > 0 && (
-                        <div style={{ padding: '12px', textAlign: 'center', background: '#f9f9f9' }}>
-                          <div style={{ display: 'flex', gap: 12, justifyContent: 'center', marginBottom: 8 }}>
-                            <button
+                        <div style={{ padding: '16px 12px', textAlign: 'center', background: '#f9f9f9' }}>
+                          <div style={{ display: 'flex', gap: 12, justifyContent: 'center', marginBottom: 8, flexWrap: 'wrap' }}>
+                            <Button
+                              variant="ink"
+                              size="sm"
                               onClick={() => handleCarouselPrev(eventIndex)}
                               disabled={mediaCount === 0}
-                              style={{
-                                padding: '6px 12px',
-                                background: 'var(--s54-ink)',
-                                color: '#fff',
-                                border: 'none',
-                                borderRadius: 4,
-                                cursor: mediaCount === 0 ? 'default' : 'pointer',
-                                opacity: mediaCount === 0 ? 0.5 : 1,
-                                fontSize: 14
-                              }}
+                              style={{ opacity: mediaCount === 0 ? 0.5 : 1 }}
                             >
-                              ← Previous
-                            </button>
-                            <button
+                              <span className="material-symbols-outlined" style={{ fontSize: 18 }}>chevron_left</span>
+                              Previous
+                            </Button>
+                            <Button
+                              variant="ink"
+                              size="sm"
                               onClick={() => handleCarouselNext(eventIndex)}
                               disabled={mediaCount === 0}
-                              style={{
-                                padding: '6px 12px',
-                                background: 'var(--s54-ink)',
-                                color: '#fff',
-                                border: 'none',
-                                borderRadius: 4,
-                                cursor: mediaCount === 0 ? 'default' : 'pointer',
-                                opacity: mediaCount === 0 ? 0.5 : 1,
-                                fontSize: 14
-                              }}
+                              style={{ opacity: mediaCount === 0 ? 0.5 : 1 }}
                             >
-                              Next →
-                            </button>
+                              Next
+                              <span className="material-symbols-outlined" style={{ fontSize: 18 }}>chevron_right</span>
+                            </Button>
                           </div>
                           {mediaCount > 1 && (
                             <div style={{
                               fontSize: 12,
                               color: 'var(--s54-ink-80)',
-                              fontFamily: 'Inter'
+                              fontFamily: 'Inter',
+                              marginTop: 8
                             }}>
                               {carouselIdx + 1} of {mediaCount}
                             </div>
@@ -481,43 +470,32 @@ function Past() {
 
               {!isExpanded && (
                 <div style={{ gridColumn: "span 12" }}>
-                  <button
+                  <Button
+                    variant="ghost"
                     onClick={() => handleToggleExpand(eventIndex)}
                     style={{
                       width: '100%',
-                      padding: '16px',
-                      background: 'transparent',
-                      border: '2px solid var(--s54-ink)',
-                      borderRadius: 8,
-                      cursor: 'pointer',
+                      justifyContent: 'flex-start',
                       fontFamily: 'Gochi Hand',
                       fontSize: 20,
                       textAlign: 'left',
-                      color: 'var(--s54-ink)'
+                      height: 56
                     }}
                   >
                     {event.title}
-                  </button>
+                  </Button>
                 </div>
               )}
 
               {isExpanded && (
                 <div style={{ gridColumn: "span 12" }}>
-                  <button
+                  <Button
+                    variant="ink"
+                    size="sm"
                     onClick={() => handleToggleExpand(eventIndex)}
-                    style={{
-                      padding: '8px 16px',
-                      background: 'var(--s54-ink)',
-                      color: '#fff',
-                      border: 'none',
-                      borderRadius: 4,
-                      cursor: 'pointer',
-                      fontSize: 14,
-                      fontFamily: 'Inter'
-                    }}
                   >
                     Close
-                  </button>
+                  </Button>
                 </div>
               )}
             </div>
