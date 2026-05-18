@@ -5,6 +5,7 @@ let WHY_PROPS = [];
 let SUPPORTERS = [];
 let HERO_DATA = {};
 let CTA_DATA = {};
+let PAST_EVENTS = [];
 
 let dataLoadError = null;
 let dataLoadStarted = false;
@@ -15,13 +16,14 @@ async function loadCMSData() {
   dataLoadStarted = true;
   try {
     // Load all content in parallel
-    const [eventsRes, journeyRes, whyRes, supportersRes, heroRes, ctaRes] = await Promise.all([
+    const [eventsRes, journeyRes, whyRes, supportersRes, heroRes, ctaRes, pastEventsRes] = await Promise.all([
       fetch('/_content/events.json'),
       fetch('/_content/journey.json'),
       fetch('/_content/why.json'),
       fetch('/_content/supporters.json'),
       fetch('/_content/hero.json'),
-      fetch('/_content/cta.json')
+      fetch('/_content/cta.json'),
+      fetch('/_content/past-events.json')
     ]);
 
     const eventsData = await eventsRes.json();
@@ -30,6 +32,7 @@ async function loadCMSData() {
     const supportersData = await supportersRes.json();
     const heroData = await heroRes.json();
     const ctaData = await ctaRes.json();
+    const pastEventsData = await pastEventsRes.json();
 
     EVENTS = eventsData.events || [];
     JOURNEY_DAYS = journeyData.days || [];
@@ -38,7 +41,17 @@ async function loadCMSData() {
     HERO_DATA = heroData;
     CTA_DATA = ctaData;
 
-    console.log('✓ CMS data loaded:', { EVENTS, JOURNEY_DAYS, WHY_PROPS, SUPPORTERS });
+    PAST_EVENTS = pastEventsData.pastEvents || [];
+
+    // Enforce 5-media constraint defensively
+    PAST_EVENTS.forEach((event, idx) => {
+      if (event.images && event.images.length > 5) {
+        console.warn(`Past event "${event.title}" has ${event.images.length} media items. Truncating to 5.`);
+        event.images = event.images.slice(0, 5);
+      }
+    });
+
+    console.log('✓ CMS data loaded:', { EVENTS, JOURNEY_DAYS, WHY_PROPS, SUPPORTERS, HERO_DATA, CTA_DATA, PAST_EVENTS });
     window.CMS_DATA_STATUS = 'loaded';
     dataLoadError = null;
     return true;
