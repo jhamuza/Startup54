@@ -2,7 +2,7 @@
   "supporters": [
     {
       "name": "TEGAS",
-      "src": "/supporters/tegas.png",
+      "src": "https://tegas.org.my/wp-content/uploads/2021/03/tegaslogor.png",
       "bg": "white"
     },
     {
@@ -23,11 +23,6 @@
     {
       "name": "Borneo Digital",
       "src": "/supporters/borneodigital.png",
-      "bg": "white"
-    },
-    {
-      "src": "https://png.pngtree.com/element_pic/00/16/09/2057e0eecf792fb.jpg",
-      "name": "Random",
       "bg": "white"
     }
   ]
