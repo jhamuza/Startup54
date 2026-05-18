@@ -26,4 +26,8 @@ function App() {
   );
 }
 
-ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+// Wait for CMS data to load before rendering
+(async () => {
+  await window.CMS_DATA_PROMISE;
+  ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+})();
