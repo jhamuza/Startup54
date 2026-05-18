@@ -182,3 +182,46 @@ collections:
           - label: Button URL
             name: buttonUrl
             widget: string
+
+  - name: pastEvents
+    label: Past Events
+    files:
+      - name: pastEvents
+        label: All Past Events
+        file: public/_content/past-events.json
+        fields:
+          - label: Past Events
+            name: pastEvents
+            widget: list
+            fields:
+              - label: Event ID
+                name: id
+                widget: string
+                hint: Unique identifier (e.g., kuching-2025)
+              - label: Title (city, region)
+                name: title
+                widget: string
+              - label: Venue
+                name: venue
+                widget: string
+              - label: Location
+                name: location
+                widget: string
+              - label: Story
+                name: story
+                widget: text
+                hint: Event description and narrative (supports multiline)
+              - label: Media (Images/Videos)
+                name: images
+                widget: list
+                max: 5
+                hint: Up to 5 media items (images or YouTube videos)
+                fields:
+                  - label: Type
+                    name: type
+                    widget: select
+                    options: [image, video]
+                  - label: URL (image path or YouTube embed URL)
+                    name: url
+                    widget: string
+                    hint: Local path (/images/...) or external URL
