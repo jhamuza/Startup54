@@ -41,7 +41,7 @@
 - `venue`: venue name (string)
 - `location`: location description (string)
 - `story`: event description/narrative (string, can include newlines for rich text)
-- `images`: array of media objects (up to 5)
+- `images`: array of media objects (up to 5) — **Field name is `images` (plural), not `media`. Despite containing mixed image/video types, the JSON field is named `images`.**
   - Each object has `type` ("image" or "video") and `url` (local path or external URL)
 
 ### CMS Configuration
@@ -115,7 +115,7 @@ Add the following collection object to the `collections` array:
 }
 ```
 
-**Media constraint enforcement:** Decap CMS `max: 5` field enforces the 5-item limit on the frontend. The data loader in `data.js` will also truncate excess items with a warning for defensive programming.
+**Media constraint enforcement:** Decap CMS `max: 5` field prevents adding more than 5 items in the CMS editor UI. The data loader in `data.js` implements defensive truncation: if corrupted JSON lands in `past-events.json` with 6+ media items, the loader truncates to 5 and logs a console warning. This two-layer approach ensures safety.
 
 This allows users to:
 - Add/remove past events
@@ -197,10 +197,21 @@ Structure: Map `PAST_EVENTS` array. Each event renders as an expandable card. Fi
 - Previous/Next buttons below carousel (centered, left/right aligned)
 - Previous button disabled when at first item, Next button disabled when at last item
 - Image counter centered below buttons: "1 of 5" (only if more than 1 item)
-- Keyboard support: arrow left/right to navigate
 - Mixed media: images show as `<img>` tags, videos show as YouTube `<iframe>`
 - Video dimensions: 100% width, aspect ratio 16:9 (560px × 315px on standard size)
 - Image dimensions: 100% width, auto height, max-height 400px
+
+**Keyboard navigation:**
+- Arrow left key: advance to previous media item
+- Arrow right key: advance to next media item
+- Implementation: add keydown event listener on carousel container; when focused, intercept ArrowLeft/ArrowRight and call prev/next handlers; prevent default browser scroll
+- Example pseudocode:
+```javascript
+carouselContainer.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowLeft') { e.preventDefault(); handlePrev(); }
+  if (e.key === 'ArrowRight') { e.preventDefault(); handleNext(); }
+});
+```
 
 **Expandable behavior:**
 - First event (Kuching) expanded on page load
