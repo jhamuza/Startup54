@@ -11,5 +11,19 @@
   <div id="nc-root"></div>
   <script src="config.js"></script>
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  <script>
+    // Wait for Decap CMS to load, then initialize with config
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        if (window.CMS && window.CMS_CONFIG) {
+          try {
+            window.CMS.init({ config: window.CMS_CONFIG });
+          } catch (e) {
+            console.error('Error initializing CMS:', e);
+          }
+        }
+      }, 100);
+    });
+  </script>
 </body>
 </html>
