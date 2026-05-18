@@ -49,12 +49,36 @@ export default async function handler(req, res) {
       const data = await tokenRes.json();
 
       if (data.error) {
-        return res.redirect(`/admin?error=${encodeURIComponent(data.error)}`);
+        const html = `<!DOCTYPE html><html><body><script>
+          window.opener.postMessage('authorization:github:error:${data.error}', '*');
+          window.close();
+        </script></body></html>`;
+        res.setHeader('Content-Type', 'text/html');
+        return res.status(200).send(html);
       }
 
-      // Redirect to admin with token in query params for Decap CMS
       const token = data.access_token;
-      return res.redirect(`/admin?access_token=${encodeURIComponent(token)}&token_type=bearer`);
+      const html = `<!DOCTYPE html>
+<html>
+<body>
+<script>
+(function() {
+  function receiveMessage(e) {
+    window.removeEventListener("message", receiveMessage, false);
+    window.opener.postMessage(
+      'authorization:github:success:{"token":"${token}","provider":"github"}',
+      e.origin
+    );
+    window.close();
+  }
+  window.addEventListener("message", receiveMessage, false);
+  window.opener.postMessage("authorizing:github", "*");
+})();
+</script>
+</body>
+</html>`;
+      res.setHeader('Content-Type', 'text/html');
+      return res.status(200).send(html);
     } catch (error) {
       res.status(500).json({ error: error.message });
     }
