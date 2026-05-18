@@ -46,10 +46,10 @@ collections:
                 name: lng
                 widget: number
 
-  - name: pastEvents
+  - name: past-events
     label: Past Events
     files:
-      - name: pastEvents
+      - name: past-events
         label: All Past Events
         file: public/_content/past-events.json
         fields:
