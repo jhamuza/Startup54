@@ -29,6 +29,11 @@
       "name": "UiTM",
       "src": "https://wp.logos-download.com/wp-content/uploads/2017/11/UiTM_Universiti_Teknologi_MARA_logo.png?dl",
       "bg": "white"
+    },
+    {
+      "name": "CTRL-D Studio",
+      "src": "https://www.ctrldstudio.com/wp-content/uploads/2024/10/CtrlD_logo_white_R.png",
+      "bg": "ink"
     }
   ]
 }
