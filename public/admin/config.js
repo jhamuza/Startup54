@@ -40,7 +40,7 @@ window.CMS_CONFIG = {
     {
       name: 'past-events',
       label: 'Past Events',
-      sortable_fields: [],
+      sortable_fields: [{ field: 'commit_date' }],
       files: [
         {
           name: 'past-events',
