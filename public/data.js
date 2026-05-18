@@ -6,7 +6,13 @@ let SUPPORTERS = [];
 let HERO_DATA = {};
 let CTA_DATA = {};
 
+let dataLoadError = null;
+let dataLoadStarted = false;
+window.CMS_DATA_STATUS = 'idle';
+
 async function loadCMSData() {
+  window.CMS_DATA_STATUS = 'loading';
+  dataLoadStarted = true;
   try {
     // Load all content in parallel
     const [eventsRes, journeyRes, whyRes, supportersRes, heroRes, ctaRes] = await Promise.all([
@@ -33,12 +39,17 @@ async function loadCMSData() {
     CTA_DATA = ctaData;
 
     console.log('✓ CMS data loaded:', { EVENTS, JOURNEY_DAYS, WHY_PROPS, SUPPORTERS });
+    window.CMS_DATA_STATUS = 'loaded';
+    dataLoadError = null;
     return true;
   } catch (error) {
     console.error('Failed to load CMS data:', error);
+    dataLoadError = error;
+    window.CMS_DATA_STATUS = 'error';
     return false;
   }
 }
 
 // Load data immediately
-loadCMSData();
+const dataLoadPromise = loadCMSData();
+window.CMS_DATA_PROMISE = dataLoadPromise;
