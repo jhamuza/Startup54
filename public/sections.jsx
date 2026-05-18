@@ -270,85 +270,259 @@ function Why() {
 }
 
 function Past() {
+  const [expandedIndex, setExpandedIndex] = React.useState(0);
+  const [carouselIndices, setCarouselIndices] = React.useState({});
+
+  const handleToggleExpand = (index) => {
+    setExpandedIndex(expandedIndex === index ? -1 : index);
+  };
+
+  const handleCarouselPrev = (eventIndex) => {
+    const currentIdx = carouselIndices[eventIndex] || 0;
+    const event = PAST_EVENTS[eventIndex];
+    const mediaCount = event.images?.length || 0;
+    if (mediaCount === 0) return;
+    const newIdx = currentIdx === 0 ? mediaCount - 1 : currentIdx - 1;
+    setCarouselIndices({ ...carouselIndices, [eventIndex]: newIdx });
+  };
+
+  const handleCarouselNext = (eventIndex) => {
+    const currentIdx = carouselIndices[eventIndex] || 0;
+    const event = PAST_EVENTS[eventIndex];
+    const mediaCount = event.images?.length || 0;
+    if (mediaCount === 0) return;
+    const newIdx = currentIdx === mediaCount - 1 ? 0 : currentIdx + 1;
+    setCarouselIndices({ ...carouselIndices, [eventIndex]: newIdx });
+  };
+
+  const handleKeyDown = (e, eventIndex) => {
+    if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      handleCarouselPrev(eventIndex);
+    } else if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      handleCarouselNext(eventIndex);
+    }
+  };
+
+  const renderMediaItem = (mediaItem, eventIndex, mediaIndex) => {
+    if (!mediaItem) return null;
+
+    if (mediaItem.type === 'video') {
+      return (
+        <iframe
+          key={`${eventIndex}-${mediaIndex}`}
+          width="100%"
+          src={mediaItem.url}
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+          style={{
+            display: 'block',
+            width: '100%',
+            aspectRatio: '16 / 9',
+            maxHeight: 400
+          }}
+        />
+      );
+    }
+
+    return (
+      <img
+        key={`${eventIndex}-${mediaIndex}`}
+        src={mediaItem.url}
+        alt="Event media"
+        style={{
+          display: 'block',
+          width: '100%',
+          height: 'auto',
+          maxHeight: 400,
+          objectFit: 'cover'
+        }}
+      />
+    );
+  };
+
+  if (!PAST_EVENTS || PAST_EVENTS.length === 0) {
+    return null;
+  }
+
   return (
-    <section id="past" data-screen-label="Past Events"
-    style={{ padding: "60px 0" }}>
+    <section id="past" data-screen-label="Past Events" style={{ padding: "60px 0" }}>
       <div style={{ textAlign: "center", marginBottom: 36 }}>
         <span className="section-eyebrow" style={{ background: "var(--s54-gold)" }}>The story so far</span>
-        <h2 style={{ fontFamily: "Gochi Hand", fontSize: "clamp(40px, 4.5vw, 64px)",
-          margin: "12px 0 0", lineHeight: 1 }}>
+        <h2 style={{
+          fontFamily: "Gochi Hand",
+          fontSize: "clamp(40px, 4.5vw, 64px)",
+          margin: "12px 0 0",
+          lineHeight: 1
+        }}>
           Where we started: <Highlight color="var(--s54-coral)"><span style={{ color: "#fff" }}>Kuching</span></Highlight>.
         </h2>
       </div>
 
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(12, 1fr)", gap: 22 }}>
-        <div style={{ gridColumn: "span 7" }}>
-          <Card tone="white" tilt={-0.4} lift={false} style={{
-            padding: 0, minHeight: 380, position: "relative", overflow: "hidden"
-          }}>
-            <div style={{
-              position: "absolute", inset: 0,
-              backgroundImage:
-              "linear-gradient(180deg, rgba(0,0,0,0.05), rgba(0,0,0,0.45)), " +
-              "url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=1200&auto=format&fit=crop')",
-              backgroundSize: "cover", backgroundPosition: "center"
-            }} />
-            <div style={{
-              position: "absolute", inset: 0, padding: 32,
-              display: "flex", flexDirection: "column", justifyContent: "flex-end",
-              color: "#fff"
-            }}>
-              <span style={{
-                display: "inline-flex", alignItems: "center", gap: 6,
-                background: "var(--s54-gold)", color: "var(--s54-ink)",
-                border: "2px solid var(--s54-ink)", borderRadius: 999,
-                padding: "4px 10px", width: "fit-content",
-                fontFamily: "Inter", fontSize: 11, fontWeight: 700,
-                letterSpacing: "0.08em", textTransform: "uppercase",
-                boxShadow: "2px 2px 0 0 var(--s54-ink)", marginBottom: 14
-              }}>
-                <span className="material-symbols-outlined" style={{ fontSize: 14 }}>history</span>
-                Inaugural event
-              </span>
-              <h3 style={{ fontFamily: "Gochi Hand", fontSize: 56, margin: 0, lineHeight: 0.95,
-                textShadow: "0 2px 8px rgba(0,0,0,0.4)" }}>
-                Kuching, Sarawak
-              </h3>
-              <div style={{ fontFamily: "Gochi Hand", fontSize: 24, marginTop: 4,
-                textShadow: "0 2px 8px rgba(0,0,0,0.4)" }}>
-                TEGAS Digital Village
-              </div>
-            </div>
-          </Card>
-        </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: 22 }}>
+        {PAST_EVENTS.map((event, eventIndex) => {
+          const isExpanded = expandedIndex === eventIndex;
+          const carouselIdx = carouselIndices[eventIndex] || 0;
+          const currentMedia = event.images?.[carouselIdx];
+          const mediaCount = event.images?.length || 0;
 
-        <div style={{ gridColumn: "span 5", display: "flex", flexDirection: "column", gap: 18 }}>
-          <Card tone="gold" tilt={0.6} lift={true} style={{ padding: 22 }}>
-            <h3 style={{ fontFamily: "Gochi Hand", fontSize: 28, margin: "0 0 8px" }}>
-              How it went
-            </h3>
-            <p style={{ fontFamily: "Inter", fontSize: 14.5, lineHeight: 1.55, margin: 0 }}>
-              Three days, dozens of pitches, a room full of new friends, and a handful of
-              teams who left as actual companies. The blueprint for everything that comes next.
-            </p>
-          </Card>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 18 }}>
-            <Card tone="white" tilt={-0.8} lift={true} style={{ padding: 18, textAlign: "center" }}>
-              <div style={{ fontFamily: "Gochi Hand", fontSize: 56, lineHeight: 0.9 }}>54</div>
-              <div style={{ fontFamily: "Inter", fontSize: 12, fontWeight: 700,
-                letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--s54-ink-80)" }}>
-                Hours start to finish
-              </div>
-            </Card>
-            <Card tone="white" tilt={0.6} lift={true} style={{ padding: 18, textAlign: "center" }}>
-              <div style={{ fontFamily: "Gochi Hand", fontSize: 56, lineHeight: 0.9 }}>3</div>
-              <div style={{ fontFamily: "Inter", fontSize: 12, fontWeight: 700,
-                letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--s54-ink-80)" }}>
-                Days · 1 city · ∞ ramen
-              </div>
-            </Card>
-          </div>
-        </div>
+          return (
+            <div
+              key={event.id}
+              style={{
+                display: "grid",
+                gridTemplateColumns: window.innerWidth < 768 ? "repeat(1, 1fr)" : "repeat(12, 1fr)",
+                gap: 22,
+                maxHeight: isExpanded ? '1000px' : '120px',
+                transition: 'max-height 0.3s ease-in-out',
+                overflow: 'hidden'
+              }}
+              onKeyDown={(e) => isExpanded && handleKeyDown(e, eventIndex)}
+              tabIndex={isExpanded ? 0 : -1}
+            >
+              {isExpanded && (
+                <>
+                  <div style={{ gridColumn: window.innerWidth < 768 ? "span 1" : "span 7" }}>
+                    <Card tone="white" tilt={-0.4} lift={false} style={{
+                      padding: 0,
+                      minHeight: 380,
+                      position: "relative",
+                      overflow: "hidden",
+                      display: 'flex',
+                      flexDirection: 'column'
+                    }}>
+                      <div style={{ flex: 1, position: 'relative', overflow: 'hidden' }}>
+                        {mediaCount > 0 ? (
+                          renderMediaItem(currentMedia, eventIndex, carouselIdx)
+                        ) : (
+                          <div style={{
+                            width: '100%',
+                            height: '100%',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            background: '#f0f0f0',
+                            color: '#999'
+                          }}>
+                            No media available
+                          </div>
+                        )}
+                      </div>
+                      {mediaCount > 0 && (
+                        <div style={{ padding: '12px', textAlign: 'center', background: '#f9f9f9' }}>
+                          <div style={{ display: 'flex', gap: 12, justifyContent: 'center', marginBottom: 8 }}>
+                            <button
+                              onClick={() => handleCarouselPrev(eventIndex)}
+                              disabled={mediaCount === 0}
+                              style={{
+                                padding: '6px 12px',
+                                background: 'var(--s54-ink)',
+                                color: '#fff',
+                                border: 'none',
+                                borderRadius: 4,
+                                cursor: mediaCount === 0 ? 'default' : 'pointer',
+                                opacity: mediaCount === 0 ? 0.5 : 1,
+                                fontSize: 14
+                              }}
+                            >
+                              ← Previous
+                            </button>
+                            <button
+                              onClick={() => handleCarouselNext(eventIndex)}
+                              disabled={mediaCount === 0}
+                              style={{
+                                padding: '6px 12px',
+                                background: 'var(--s54-ink)',
+                                color: '#fff',
+                                border: 'none',
+                                borderRadius: 4,
+                                cursor: mediaCount === 0 ? 'default' : 'pointer',
+                                opacity: mediaCount === 0 ? 0.5 : 1,
+                                fontSize: 14
+                              }}
+                            >
+                              Next →
+                            </button>
+                          </div>
+                          {mediaCount > 1 && (
+                            <div style={{
+                              fontSize: 12,
+                              color: 'var(--s54-ink-80)',
+                              fontFamily: 'Inter'
+                            }}>
+                              {carouselIdx + 1} of {mediaCount}
+                            </div>
+                          )}
+                        </div>
+                      )}
+                    </Card>
+                  </div>
+
+                  <div style={{ gridColumn: window.innerWidth < 768 ? "span 1" : "span 5", display: "flex", flexDirection: "column", gap: 18 }}>
+                    <Card tone="gold" tilt={0.6} lift={true} style={{ padding: 22 }}>
+                      <h3 style={{ fontFamily: "Gochi Hand", fontSize: 28, margin: "0 0 8px" }}>
+                        {event.title}
+                      </h3>
+                      <div style={{ fontFamily: "Inter", fontSize: 13, color: "var(--s54-ink-80)", marginBottom: 8 }}>
+                        {event.venue}
+                      </div>
+                      <div style={{ fontFamily: "Inter", fontSize: 13, color: "var(--s54-ink-80)", marginBottom: 12 }}>
+                        {event.location}
+                      </div>
+                      <p style={{ fontFamily: "Inter", fontSize: 14.5, lineHeight: 1.55, margin: 0, whiteSpace: 'pre-wrap' }}>
+                        {event.story}
+                      </p>
+                    </Card>
+                  </div>
+                </>
+              )}
+
+              {!isExpanded && (
+                <div style={{ gridColumn: "span 12" }}>
+                  <button
+                    onClick={() => handleToggleExpand(eventIndex)}
+                    style={{
+                      width: '100%',
+                      padding: '16px',
+                      background: 'transparent',
+                      border: '2px solid var(--s54-ink)',
+                      borderRadius: 8,
+                      cursor: 'pointer',
+                      fontFamily: 'Gochi Hand',
+                      fontSize: 20,
+                      textAlign: 'left',
+                      color: 'var(--s54-ink)'
+                    }}
+                  >
+                    {event.title}
+                  </button>
+                </div>
+              )}
+
+              {isExpanded && (
+                <div style={{ gridColumn: "span 12" }}>
+                  <button
+                    onClick={() => handleToggleExpand(eventIndex)}
+                    style={{
+                      padding: '8px 16px',
+                      background: 'var(--s54-ink)',
+                      color: '#fff',
+                      border: 'none',
+                      borderRadius: 4,
+                      cursor: 'pointer',
+                      fontSize: 14,
+                      fontFamily: 'Inter'
+                    }}
+                  >
+                    Close
+                  </button>
+                </div>
+              )}
+            </div>
+          );
+        })}
       </div>
     </section>
   );
