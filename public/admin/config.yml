@@ -46,6 +46,45 @@ collections:
                 name: lng
                 widget: number
 
+  - name: pastEvents
+    label: Past Events
+    files:
+      - name: pastEvents
+        label: All Past Events
+        file: public/_content/past-events.json
+        fields:
+          - label: Past Events
+            name: pastEvents
+            widget: list
+            fields:
+              - label: Event ID
+                name: id
+                widget: string
+                hint: "Unique identifier (e.g., kuching-2025)"
+              - label: Title
+                name: title
+                widget: string
+              - label: Venue
+                name: venue
+                widget: string
+              - label: Location
+                name: location
+                widget: string
+              - label: Story
+                name: story
+                widget: text
+              - label: Media
+                name: images
+                widget: list
+                fields:
+                  - label: Type
+                    name: type
+                    widget: select
+                    options: [image, video]
+                  - label: URL
+                    name: url
+                    widget: string
+
   - name: hero
     label: Hero Section
     files:
@@ -182,42 +221,3 @@ collections:
           - label: Button URL
             name: buttonUrl
             widget: string
-
-  - name: pastEvents
-    label: Past Events
-    files:
-      - name: pastEvents
-        label: All Past Events
-        file: public/_content/past-events.json
-        fields:
-          - label: Past Events
-            name: pastEvents
-            widget: list
-            fields:
-              - label: Event ID
-                name: id
-                widget: string
-                hint: "Unique identifier (e.g., kuching-2025)"
-              - label: Title
-                name: title
-                widget: string
-              - label: Venue
-                name: venue
-                widget: string
-              - label: Location
-                name: location
-                widget: string
-              - label: Story
-                name: story
-                widget: text
-              - label: Media
-                name: images
-                widget: list
-                fields:
-                  - label: Type
-                    name: type
-                    widget: select
-                    options: [image, video]
-                  - label: URL
-                    name: url
-                    widget: string
