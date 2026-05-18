@@ -12,21 +12,27 @@ window.CMS_CONFIG = {
     {
       name: 'events',
       label: 'Events',
-      file: 'public/_content/events.json',
-      fields: [
+      files: [
         {
-          label: 'Events',
           name: 'events',
-          widget: 'list',
+          label: 'All Events',
+          file: 'public/_content/events.json',
           fields: [
-            { label: 'City', name: 'city', widget: 'string' },
-            { label: 'Region', name: 'region', widget: 'string' },
-            { label: 'Status', name: 'status', widget: 'select', options: ['past', 'live', 'soon'] },
-            { label: 'Dates', name: 'dates', widget: 'string' },
-            { label: 'Venue', name: 'venue', widget: 'string' },
-            { label: 'Blurb', name: 'blurb', widget: 'text' },
-            { label: 'Latitude', name: 'lat', widget: 'number' },
-            { label: 'Longitude', name: 'lng', widget: 'number' }
+            {
+              label: 'Events',
+              name: 'events',
+              widget: 'list',
+              fields: [
+                { label: 'City', name: 'city', widget: 'string' },
+                { label: 'Region', name: 'region', widget: 'string' },
+                { label: 'Status', name: 'status', widget: 'select', options: ['past', 'live', 'soon'] },
+                { label: 'Dates', name: 'dates', widget: 'string' },
+                { label: 'Venue', name: 'venue', widget: 'string' },
+                { label: 'Blurb', name: 'blurb', widget: 'text' },
+                { label: 'Latitude', name: 'lat', widget: 'number' },
+                { label: 'Longitude', name: 'lng', widget: 'number' }
+              ]
+            }
           ]
         }
       ]
@@ -34,36 +40,52 @@ window.CMS_CONFIG = {
     {
       name: 'hero',
       label: 'Hero Section',
-      file: 'public/_content/hero.json',
-      fields: [
-        { label: 'Headline', name: 'headline', widget: 'string' },
-        { label: 'Upcoming City', name: 'upcomingCity', widget: 'string' },
-        { label: 'Dates', name: 'dates', widget: 'string' },
-        { label: 'Venue', name: 'venue', widget: 'string' }
+      files: [
+        {
+          name: 'hero',
+          label: 'Hero Content',
+          file: 'public/_content/hero.json',
+          fields: [
+            { label: 'Headline', name: 'headline', widget: 'string' },
+            { label: 'Subheadline', name: 'subheadline', widget: 'text' },
+            { label: 'CTA Button Text', name: 'ctaText', widget: 'string' },
+            { label: 'CTA Button URL', name: 'ctaUrl', widget: 'string' },
+            { label: 'Upcoming City', name: 'upcomingCity', widget: 'string' },
+            { label: 'Dates', name: 'dates', widget: 'string' },
+            { label: 'Venue', name: 'venue', widget: 'string' },
+            { label: 'Target Countdown Date', name: 'countdownTarget', widget: 'string' }
+          ]
+        }
       ]
     },
     {
       name: 'journey',
       label: '3-Day Journey',
-      file: 'public/_content/journey.json',
-      fields: [
+      files: [
         {
-          label: 'Days',
-          name: 'days',
-          widget: 'list',
+          name: 'journey',
+          label: 'Journey Schedule',
+          file: 'public/_content/journey.json',
           fields: [
-            { label: 'Day Number', name: 'n', widget: 'string' },
-            { label: 'Day Name', name: 'day', widget: 'string' },
-            { label: 'Title', name: 'title', widget: 'string' },
-            { label: 'Tone', name: 'tone', widget: 'select', options: ['mint', 'gold', 'coral'] },
-            { label: 'Icon', name: 'icon', widget: 'string' },
             {
-              label: 'Bullets',
-              name: 'bullets',
+              label: 'Days',
+              name: 'days',
               widget: 'list',
               fields: [
-                { label: 'Time', name: 'time', widget: 'string' },
-                { label: 'Activity', name: 'what', widget: 'string' }
+                { label: 'Day Number', name: 'n', widget: 'string' },
+                { label: 'Day Name', name: 'day', widget: 'string' },
+                { label: 'Title', name: 'title', widget: 'string' },
+                { label: 'Tone', name: 'tone', widget: 'select', options: ['mint', 'gold', 'coral'] },
+                { label: 'Icon', name: 'icon', widget: 'string' },
+                {
+                  label: 'Bullets',
+                  name: 'bullets',
+                  widget: 'list',
+                  fields: [
+                    { label: 'Time', name: 'time', widget: 'string' },
+                    { label: 'Activity', name: 'what', widget: 'string' }
+                  ]
+                }
               ]
             }
           ]
@@ -73,17 +95,23 @@ window.CMS_CONFIG = {
     {
       name: 'why',
       label: 'Why Participate',
-      file: 'public/_content/why.json',
-      fields: [
+      files: [
         {
-          label: 'Propositions',
           name: 'why',
-          widget: 'list',
+          label: 'Value Propositions',
+          file: 'public/_content/why.json',
           fields: [
-            { label: 'Icon', name: 'icon', widget: 'string' },
-            { label: 'Tone', name: 'tone', widget: 'select', options: ['coral', 'mint', 'gold', 'lavender'] },
-            { label: 'Title', name: 'title', widget: 'string' },
-            { label: 'Description', name: 'body', widget: 'text' }
+            {
+              label: 'Propositions',
+              name: 'why',
+              widget: 'list',
+              fields: [
+                { label: 'Icon', name: 'icon', widget: 'string' },
+                { label: 'Tone', name: 'tone', widget: 'select', options: ['coral', 'mint', 'gold', 'lavender'] },
+                { label: 'Title', name: 'title', widget: 'string' },
+                { label: 'Description', name: 'body', widget: 'text' }
+              ]
+            }
           ]
         }
       ]
@@ -91,16 +119,22 @@ window.CMS_CONFIG = {
     {
       name: 'supporters',
       label: 'Supporters',
-      file: 'public/_content/supporters.json',
-      fields: [
+      files: [
         {
-          label: 'Supporters',
           name: 'supporters',
-          widget: 'list',
+          label: 'Supporter Logos',
+          file: 'public/_content/supporters.json',
           fields: [
-            { label: 'Name', name: 'name', widget: 'string' },
-            { label: 'Logo URL', name: 'src', widget: 'string' },
-            { label: 'Background', name: 'bg', widget: 'select', options: ['white', 'ink'] }
+            {
+              label: 'Supporters',
+              name: 'supporters',
+              widget: 'list',
+              fields: [
+                { label: 'Name', name: 'name', widget: 'string' },
+                { label: 'Logo URL', name: 'src', widget: 'string' },
+                { label: 'Background', name: 'bg', widget: 'select', options: ['white', 'ink'] }
+              ]
+            }
           ]
         }
       ]
@@ -108,69 +142,48 @@ window.CMS_CONFIG = {
     {
       name: 'cta',
       label: 'CTA Section',
-      file: 'public/_content/cta.json',
-      fields: [
-        { label: 'Headline', name: 'headline', widget: 'string' },
-        { label: 'Description', name: 'description', widget: 'text' },
-        { label: 'Button Text', name: 'buttonText', widget: 'string' },
-        { label: 'Button URL', name: 'buttonUrl', widget: 'string' }
+      files: [
+        {
+          name: 'cta',
+          label: 'Call to Action',
+          file: 'public/_content/cta.json',
+          fields: [
+            { label: 'Headline', name: 'headline', widget: 'string' },
+            { label: 'Description', name: 'description', widget: 'text' },
+            { label: 'Button Text', name: 'buttonText', widget: 'string' },
+            { label: 'Button URL', name: 'buttonUrl', widget: 'string' }
+          ]
+        }
       ]
     },
     {
       name: 'pastEvents',
       label: 'Past Events',
-      file: 'public/_content/past-events.json',
-      fields: [
+      files: [
         {
-          label: 'Past Events',
           name: 'pastEvents',
-          widget: 'list',
+          label: 'All Past Events',
+          file: 'public/_content/past-events.json',
           fields: [
             {
-              label: 'Event ID',
-              name: 'id',
-              widget: 'string',
-              hint: 'Unique identifier (e.g., kuching-2025)'
-            },
-            {
-              label: 'Title (city, region)',
-              name: 'title',
-              widget: 'string'
-            },
-            {
-              label: 'Venue',
-              name: 'venue',
-              widget: 'string'
-            },
-            {
-              label: 'Location',
-              name: 'location',
-              widget: 'string'
-            },
-            {
-              label: 'Story',
-              name: 'story',
-              widget: 'text',
-              hint: 'Event description and narrative (supports multiline)'
-            },
-            {
-              label: 'Media (Images/Videos)',
-              name: 'images',
+              label: 'Past Events',
+              name: 'pastEvents',
               widget: 'list',
-              max: 5,
-              hint: 'Up to 5 media items (images or YouTube videos)',
               fields: [
+                { label: 'Event ID', name: 'id', widget: 'string', hint: 'Unique identifier (e.g., kuching-2025)' },
+                { label: 'Title (city, region)', name: 'title', widget: 'string' },
+                { label: 'Venue', name: 'venue', widget: 'string' },
+                { label: 'Location', name: 'location', widget: 'string' },
+                { label: 'Story', name: 'story', widget: 'text' },
                 {
-                  label: 'Type',
-                  name: 'type',
-                  widget: 'select',
-                  options: ['image', 'video']
-                },
-                {
-                  label: 'URL (image path or YouTube embed URL)',
-                  name: 'url',
-                  widget: 'string',
-                  hint: 'Local path (/images/...) or external URL'
+                  label: 'Media (Images/Videos)',
+                  name: 'images',
+                  widget: 'list',
+                  max: 5,
+                  fields: [
+                    { label: 'Type', name: 'type', widget: 'select', options: ['image', 'video'] },
+                    { label: 'URL', name: 'url', widget: 'string' }
+                  ]
                 }
               ]
             }
