@@ -473,7 +473,7 @@ function Footer({ logo }) {
               ["Events", "#events"],
               ["Register", "https://luma.com/ujnecsej"],
             ].map(([label, href]) => (
-              <a key={href} href={href} style={{
+              <a key={label} href={href} style={{
                 display: "block", fontFamily: "Inter", fontSize: 14, color: "var(--s54-ink-80)",
                 marginBottom: 6, textDecoration: "none"
               }}>{label}</a>
@@ -487,7 +487,7 @@ function Footer({ logo }) {
               ["Instagram", "#"],
               ["LinkedIn", "#"],
             ].map(([label, href]) => (
-              <a key={href} href={href} style={{
+              <a key={label} href={href} style={{
                 display: "block", fontFamily: "Inter", fontSize: 14, color: "var(--s54-ink-80)",
                 marginBottom: 6, textDecoration: "none"
               }}>{label}</a>
