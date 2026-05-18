@@ -24,6 +24,11 @@
       "name": "Borneo Digital",
       "src": "/supporters/borneodigital.png",
       "bg": "white"
+    },
+    {
+      "name": "UiTM",
+      "src": "https://wp.logos-download.com/wp-content/uploads/2017/11/UiTM_Universiti_Teknologi_MARA_logo.png?dl",
+      "bg": "white"
     }
   ]
 }
