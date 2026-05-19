@@ -273,6 +273,22 @@ function Past() {
   const [expandedIndex, setExpandedIndex] = React.useState(0);
   const [carouselIndices, setCarouselIndices] = React.useState({});
 
+  React.useEffect(() => {
+    if (!SLIDESHOW_DURATION || SLIDESHOW_DURATION <= 0) return;
+    if (expandedIndex < 0) return;
+    const event = PAST_EVENTS[expandedIndex];
+    const mediaCount = event?.images?.length || 0;
+    if (mediaCount <= 1) return;
+    const timer = setInterval(() => {
+      setCarouselIndices(prev => {
+        const currentIdx = prev[expandedIndex] || 0;
+        const newIdx = currentIdx === mediaCount - 1 ? 0 : currentIdx + 1;
+        return { ...prev, [expandedIndex]: newIdx };
+      });
+    }, SLIDESHOW_DURATION);
+    return () => clearInterval(timer);
+  }, [expandedIndex]);
+
   const handleToggleExpand = (index) => {
     setExpandedIndex(expandedIndex === index ? -1 : index);
   };
@@ -523,15 +539,14 @@ function Supporters() {
         </p>
       </div>
 
-      <div style={{ display: "grid",
-        gridTemplateColumns: "repeat(5, 1fr)", gap: 18,
-        alignItems: "stretch" }}>
+      <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 18 }}>
         {SUPPORTERS.map((s, i) =>
         <Card key={s.name}
         tone={s.bg === "ink" ? "ink" : "white"}
         tilt={(i % 2 === 0 ? -0.6 : 0.6) + (i - 2) * 0.2}
         lift={true}
         style={{
+          flex: "0 0 200px", width: 200,
           padding: 24, height: 150,
           display: "flex", alignItems: "center", justifyContent: "center"
         }}>

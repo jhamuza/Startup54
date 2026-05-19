@@ -48,6 +48,19 @@ window.CMS_CONFIG = {
           file: 'public/_content/past-events.json',
           fields: [
             {
+              label: 'Slideshow Duration',
+              name: 'slideshowDuration',
+              widget: 'select',
+              options: [
+                { label: 'Off (manual)', value: 0 },
+                { label: '1 second', value: 1 },
+                { label: '3 seconds', value: 3 },
+                { label: '5 seconds', value: 5 },
+                { label: '10 seconds', value: 10 },
+              ],
+              default: 3,
+            },
+            {
               label: 'Past Events',
               name: 'pastEvents',
               widget: 'list',

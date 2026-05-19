@@ -6,6 +6,7 @@ let SUPPORTERS = [];
 let HERO_DATA = {};
 let CTA_DATA = {};
 let PAST_EVENTS = [];
+let SLIDESHOW_DURATION = 0;
 
 let dataLoadError = null;
 let dataLoadStarted = false;
@@ -42,6 +43,7 @@ async function loadCMSData() {
     CTA_DATA = ctaData;
 
     PAST_EVENTS = pastEventsData.pastEvents || [];
+    SLIDESHOW_DURATION = (pastEventsData.slideshowDuration || 0) * 1000;
 
     // Enforce 5-media constraint defensively
     PAST_EVENTS.forEach((event, idx) => {

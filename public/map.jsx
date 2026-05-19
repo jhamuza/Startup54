@@ -157,7 +157,7 @@ function SarawakLeaflet({ active, onActive }) {
 
 function EventList({ active, onActive }) {
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+    <div style={{ display: "flex", flexDirection: "row", flexWrap: "wrap", gap: 16 }}>
       {EVENTS.map((ev) => {
         const s = STATUS[ev.status];
         const isActive = active === ev.id;
@@ -168,6 +168,7 @@ function EventList({ active, onActive }) {
           onClick={() => onActive(ev.id)}
           tabIndex={0}
           style={{
+            flex: "1 1 260px",
             background: isActive ? "var(--s54-white)" : "rgba(255,255,255,0.62)",
             border: "3px solid var(--s54-ink)",
             borderRadius: 14,
@@ -252,13 +253,8 @@ function EventsSection() {
         </p>
       </div>
 
-      <div style={{
-        display: "grid",
-        gridTemplateColumns: "minmax(0, 1.55fr) minmax(0, 1fr)",
-        gap: 32,
-        alignItems: "start"
-      }}>
-        <Card tone="white" tilt={-0.3} lift={false} style={{ padding: 0, overflow: "hidden" }}>
+      <div style={{ display: "flex", flexDirection: "column", gap: 32 }}>
+        <Card tone="white" tilt={-0.3} lift={false} style={{ padding: 0, overflow: "hidden", minHeight: 420 }}>
           <SarawakLeaflet active={active} onActive={setActive} />
         </Card>
         <EventList active={active} onActive={setActive} />
