@@ -1,4 +1,5 @@
 import React from 'react';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import Header from './components/Header';
 import HeroGrid from './components/HeroGrid';
 import PartnersSection from './components/PartnersSection';
@@ -29,6 +30,7 @@ const App: React.FC = () => {
           </div>
         </div>
       </div>
+      <SpeedInsights />
     </div>
   );
 };
